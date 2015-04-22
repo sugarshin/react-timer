@@ -20,7 +20,7 @@ var Timer = require('react-timer');
 
 var _onFinish = function(ev) {
   alert(ev.name);
-  return console.log(ev.component);
+  console.log(ev.component);
 };
 
 React.render(
