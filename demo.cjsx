@@ -29,7 +29,7 @@ React.render(
   <div>
     <div className="container">
       <Timer type={'countdown'} initialCount={5} onFinish={_onFinish} />
-      <pre><code>{"var React = require('react');\nvar Timer = require('./');\n\nvar _onFinish = function(ev) {\n  alert(ev.name);\n  return console.log(ev.component);\n};\n\nReact.render(\n  <Timer type={'countdown'} initialCount={5} onFinish={_onFinish} />, document.body\n);"}</code></pre>
+      <pre><code>{"var React = require('react');\nvar Timer = require('./');\n\nvar _onFinish = function(ev) {\n  alert(ev.name);\n  console.log(ev.component);\n};\n\nReact.render(\n  <Timer type={'countdown'} initialCount={5} onFinish={_onFinish} />, document.body\n);"}</code></pre>
     </div>
     <div className="github-fork-ribbon-wrapper right">
       <div className="github-fork-ribbon">
