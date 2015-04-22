@@ -33,7 +33,7 @@ React.render(
     </div>
     <div className="github-fork-ribbon-wrapper right">
       <div className="github-fork-ribbon">
-        <a href="//github.com/sugarshin/longshadow-stylus">Fork me on GitHub</a>
+        <a href="//github.com/sugarshin/react-timer">Fork me on GitHub</a>
       </div>
     </div>
   </div>
