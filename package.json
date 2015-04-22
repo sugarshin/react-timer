@@ -1,0 +1,47 @@
+{
+  "name": "react-timer",
+  "version": "0.0.1",
+  "description": "React timer",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:sugarshin/react-timer.git"
+  },
+  "main": "index.js",
+  "files": [
+    "lib",
+    "README.md",
+    "index.js",
+    "package.json",
+    "test"
+  ],
+  "scripts": {
+    "start": "npm run watch-cjsx & npm run watch-stylus",
+    "watch-cjsx": "cjsx -cwb -o lib src",
+    "watch-stylus": "stylus src -I node_modules/nib/lib -w -o lib",
+    "demo": "budo demo.cjsx:demo.js --live -v -- -t [ coffee-reactify --exetensions .cjsx ] -t stylify | garnish",
+    "build": "stylus src -I node_modules/nib/lib -o lib && cjsx -cb -o lib src",
+    "build:demo": "browserify demo.cjsx -t coffee-reactify -t stylify --exetensions='.cjsx' | uglifyjs > demo/demo.js",
+    "ghpages": "git subtree push --prefix=demo/ origin gh-pages --squash"
+  },
+  "engines": {
+    "node": "0.12.x"
+  },
+  "author": "sugarshin",
+  "license": "MIT",
+  "devDependencies": {
+    "browserify": "^9.0.8",
+    "budo": "^3.1.1",
+    "coffee-react": "^3.1.0",
+    "coffee-reactify": "^3.0.0",
+    "cssify": "^0.7.0",
+    "garnish": "^2.1.3",
+    "insert-css": "^0.2.0",
+    "insert-stylesheet": "^0.1.0",
+    "nib": "^1.1.0",
+    "react": "^0.13.2",
+    "stylify": "^1.2.0",
+    "stylus": "^0.50.0",
+    "uglify-js": "^2.4.20",
+    "watchify": "^3.1.2"
+  }
+}
