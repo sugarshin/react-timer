@@ -24,24 +24,6 @@ React.createClass
   getInitialState: ->
     count: if typeof @props.initialCount is 'number' then @props.initialCount else @props.initialCount.getTime()
 
-  tick: -> @setState count: @state.count + @_rate
-
-  start: ->
-    @_timerID = setTimeout =>
-      @timer()
-    , 1000
-
-  stop: -> clearTimeout @_timerID
-
-  timer: ->
-    @tick()
-    if @props.type is 'countup' and @_finish <= @state.count or
-    @props.type is 'countdown' and @state.count <= @_finish or @state.count <= 0
-      @stop()
-      @props.onFinish? name: 'onFinish', component: @
-    else
-      @start()
-
   componentWillMount: ->
     if @props.type is 'countup'
       @_rate = 1000
@@ -54,7 +36,25 @@ React.createClass
     else
       @_finish = @props.finish.getTime()
 
-  componentDidMount: -> @start()
+  componentDidMount: -> @_start()
+
+  _tick: -> @setState count: @state.count + @_rate
+
+  _start: ->
+    @_timerID = setTimeout =>
+      @_timer()
+    , 1000
+
+  _stop: -> clearTimeout @_timerID
+
+  _timer: ->
+    @_tick()
+    if @props.type is 'countup' and @_finish <= @state.count or
+    @props.type is 'countdown' and @state.count <= @_finish or @state.count <= 0
+      @_stop()
+      @props.onFinish? name: 'onFinish', component: @
+    else
+      @_start()
 
   _render: ->
     if typeof @props.initialCount is 'number'
